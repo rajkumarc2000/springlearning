@@ -2,6 +2,9 @@ package com.example.weebservices.springboot.user;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
@@ -9,8 +12,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(description = "Details about the user model")
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue
     private Integer id;
 
     @Size(min = 2, message = "Name should have atleast 2 chars")
@@ -55,6 +61,9 @@ public class User {
         this.id = id;
         this.name = name;
         this.birthdate = birthdate;
+    }
+
+    public User() {
     }
 
     
